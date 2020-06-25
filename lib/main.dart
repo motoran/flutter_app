@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/view/home_view.dart';
 import 'package:flutterapp/view/news_view.dart';
-import 'package:flutterapp/view/selectBlog_view.dart';
+import 'package:flutterapp/view/selectMember_view.dart';
 
 void main() {
   runApp(MyApp());
@@ -36,7 +36,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   static List<Widget> _pageList = [
-    SelectBlogView(),
+    SelectMemberView(),
     NewsPage(
       title: 'news',
     ),

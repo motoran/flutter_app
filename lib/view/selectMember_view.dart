@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/view/blog_view.dart';
 import 'package:flutterapp/view/blog_viewmodel.dart';
-import 'package:flutterapp/view/selectBlog_viewmodel.dart';
+import 'package:flutterapp/view/selectMember_viewmodel.dart';
 import 'package:provider/provider.dart';
 
-class SelectBlogView extends StatelessWidget {
+class SelectMemberView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,10 +13,10 @@ class SelectBlogView extends StatelessWidget {
         title: Text("blog"),
         automaticallyImplyLeading: false,
       ),
-      body: ChangeNotifierProvider<SelectBlogViewModel>(
-        create: (_) => SelectBlogViewModel(),
-        child: Consumer<SelectBlogViewModel>(
-            builder: (context, SelectBlogViewModel value, child) {
+      body: ChangeNotifierProvider<SelectMemberViewModel>(
+        create: (_) => SelectMemberViewModel(),
+        child: Consumer<SelectMemberViewModel>(
+            builder: (context, SelectMemberViewModel value, child) {
           return GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               mainAxisSpacing: 16,
@@ -38,7 +38,7 @@ class SelectBlogView extends StatelessWidget {
   }
 
   Widget _memberButton(
-      BuildContext context, SelectBlogViewModel vm, int index) {
+      BuildContext context, SelectMemberViewModel vm, int index) {
     return Container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,

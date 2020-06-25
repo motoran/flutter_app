@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutterapp/member_data.dart';
 
-class SelectBlogViewModel extends ChangeNotifier {
+class SelectMemberViewModel extends ChangeNotifier {
   final MemeberData _member = MemeberData();
 
   int getMemberNum() => _member.memberName.length;
@@ -10,5 +10,5 @@ class SelectBlogViewModel extends ChangeNotifier {
 
   String getMemberImage(int index) => _member.memberImage[index];
 
-  SelectBlogViewModel() {}
+  SelectMemberViewModel() {}
 }
