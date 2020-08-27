@@ -30,15 +30,15 @@ class MemeberData {
   final List<String> memberBlog = [
     "http://blog.nanabunnonijyuuni.com/s/n227/diary/blog/list?ct=01",
     "http://blog.nanabunnonijyuuni.com/s/n227/diary/blog/list?ct=02",
+    "http://blog.nanabunnonijyuuni.com/s/n227/diary/blog/list?ct=12",
     "http://blog.nanabunnonijyuuni.com/s/n227/diary/blog/list?ct=03",
     "http://blog.nanabunnonijyuuni.com/s/n227/diary/blog/list?ct=04",
     "http://blog.nanabunnonijyuuni.com/s/n227/diary/blog/list?ct=05",
-    "http://blog.nanabunnonijyuuni.com/s/n227/diary/blog/list?ct=06",
-    "http://blog.nanabunnonijyuuni.com/s/n227/diary/blog/list?ct=07",
-    "http://blog.nanabunnonijyuuni.com/s/n227/diary/blog/list?ct=08",
     "http://blog.nanabunnonijyuuni.com/s/n227/diary/blog/list?ct=09",
     "http://blog.nanabunnonijyuuni.com/s/n227/diary/blog/list?ct=10",
     "http://blog.nanabunnonijyuuni.com/s/n227/diary/blog/list?ct=11",
+    "http://blog.nanabunnonijyuuni.com/s/n227/diary/blog/list?ct=07",
+    "http://blog.nanabunnonijyuuni.com/s/n227/diary/blog/list?ct=08",
   ];
 
   MemeberData();
