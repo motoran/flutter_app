@@ -54,24 +54,27 @@ class BlogView extends StatelessWidget {
                           fit: BoxFit.fill,
                           image: NetworkImage(vm.getBlogThumbnailPath(index)),
                         )),
-
-//                child: RaisedButton(
-//                  onPressed: () {
-////                  Navigator.push(
-////                      context,
-////                      MaterialPageRoute(
-////                          builder: (_) => ChangeNotifierProvider(
-////                            create: (_) => BlogViewModel(index: index),
-////                            child: BlogView(),
-////                          )));
-//                  },
-//                ),
                   ),
                 ),
-//          Text(
-//            "${vm.getMemberName(index)}",
-//            style: TextStyle(fontSize: 12, color: Colors.lightBlue),
-//          ),
+                Flexible(
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          "${vm.getBlogTitle(index)}",
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style:
+                              TextStyle(fontSize: 15, color: Colors.lightBlue),
+                        ),
+                        Text(
+                          "${vm.getBlogWriter(index)}",
+                          style: TextStyle(fontSize: 10, color: Colors.black26),
+                        )
+                      ]),
+                ),
               ],
             ),
           );
