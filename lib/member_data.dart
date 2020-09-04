@@ -41,5 +41,11 @@ class MemeberData {
     "http://blog.nanabunnonijyuuni.com/s/n227/diary/blog/list?ct=08",
   ];
 
+  List<String> blogThumbnailPath = List<String>();
+  List<String> blogURL = List<String>();
+  List<String> blogTitle = List<String>();
+  List<String> blogDate = List<String>();
+  List<String> blogTxt = List<String>();
+
   MemeberData();
 }
