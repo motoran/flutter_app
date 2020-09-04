@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapp/view/blog_view.dart';
-import 'package:flutterapp/view/blog_viewmodel.dart';
+import 'package:flutterapp/view/selectBlog_view.dart';
+import 'package:flutterapp/view/selectBlog_viewmodel.dart';
 import 'package:flutterapp/view/selectMember_viewmodel.dart';
 import 'package:provider/provider.dart';
 
@@ -60,8 +60,8 @@ class SelectMemberView extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (_) => ChangeNotifierProvider(
-                                create: (_) => BlogViewModel(index: index),
-                                child: BlogView(),
+                                create: (_) => selectBlogViewModel(index: index),
+                                child: selectBlogView(),
                               )));
                 },
               ),
