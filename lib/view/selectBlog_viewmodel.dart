@@ -35,7 +35,7 @@ class selectBlogViewModel extends ChangeNotifier {
   void setNotification(var notification) {}
 
   //イけてない
-  void hogeScrollNotification(ScrollNotification notification) {
+  void ScrollNotificationIvent(ScrollNotification notification) {
     _notification = notification;
     if (loadingFlag) {
       if (_notification.metrics.extentAfter == 0) {

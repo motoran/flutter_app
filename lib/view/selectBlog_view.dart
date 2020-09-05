@@ -30,7 +30,7 @@ class selectBlogView extends StatelessWidget {
             return NotificationListener<ScrollNotification>(
               onNotification: (notification) {
                 // スクロールイベントのハンドリング
-                _vm.hogeScrollNotification(notification);
+                _vm.ScrollNotificationIvent(notification);
                 return false;
               },
               child: ListView.builder(
