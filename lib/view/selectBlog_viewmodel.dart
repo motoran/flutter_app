@@ -9,8 +9,6 @@ class selectBlogViewModel extends ChangeNotifier {
   final MemeberData _member = MemeberData();
   WebViewController webViewController;
 
-  ScrollNotification _notification = null;
-
   final int index;
   int pageIndex = 0;
   bool loadingFlag = true;
@@ -36,9 +34,8 @@ class selectBlogViewModel extends ChangeNotifier {
 
   //イけてない
   void ScrollNotificationIvent(ScrollNotification notification) {
-    _notification = notification;
     if (loadingFlag) {
-      if (_notification.metrics.extentAfter == 0) {
+      if (notification.metrics.extentAfter == 0) {
         BlogListScreper();
       }
     }
