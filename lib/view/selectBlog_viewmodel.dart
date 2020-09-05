@@ -9,7 +9,11 @@ class selectBlogViewModel extends ChangeNotifier {
   final MemeberData _member = MemeberData();
   WebViewController webViewController;
 
+  ScrollNotification _notification = null;
+
   final int index;
+  int pageIndex = 0;
+  bool loadingFlag = true;
   var streamController = StreamController<List<String>>();
 
   Stream<List<String>> get bloglPath => streamController.stream;
@@ -28,9 +32,21 @@ class selectBlogViewModel extends ChangeNotifier {
 
   String getBlogUrl(int index) => _member.blogURL[index];
 
+  void setNotification(var notification) {}
+
+  //イけてない
+  void hogeScrollNotification(ScrollNotification notification) {
+    _notification = notification;
+    if (loadingFlag) {
+      if (_notification.metrics.extentAfter == 0) {
+        BlogListScreper();
+      }
+    }
+  }
+
   selectBlogViewModel({int this.index}) : assert(index != null) {
     clearMemdata();
-    ScreperTest();
+    BlogListScreper();
   }
 
   void clearMemdata() {
@@ -39,16 +55,19 @@ class selectBlogViewModel extends ChangeNotifier {
     _member.blogDate.clear();
     _member.blogTxt.clear();
     _member.blogURL.clear();
+    pageIndex = 0;
   }
 
-  void ScreperTest() async {
-
+  void BlogListScreper() async {
+    loadingFlag = false;
+    String page = (pageIndex == 0) ? "" : "&page=" + pageIndex.toString();
     final String baseURL = "http://blog.nanabunnonijyuuni.com";
     final webScraper = WebScraper(baseURL);
 
     //サムネ取得
     if (await webScraper.loadWebPage(_member.memberBlog[index]
-            .replaceFirst("http://blog.nanabunnonijyuuni.com/", '/'))) {
+            .replaceFirst("http://blog.nanabunnonijyuuni.com/", '/') +
+        page)) {
       final List<Map<String, dynamic>> elements =
           webScraper.getElement('div.blog-list__thumb > img', ['style']);
       elements.forEach((element) {
@@ -99,9 +118,11 @@ class selectBlogViewModel extends ChangeNotifier {
 //            PerseBlogbThumbnailPath(element['attributes']['style'].toString()));
 //      });
 
-      streamController.sink.add(_member.blogThumbnailPath);
-    }
+    pageIndex++;
+    loadingFlag = true;
+    streamController.sink.add(_member.blogThumbnailPath);
   }
+}
 //}
 
 String PerseBlogbThumbnailPath(String data) {
