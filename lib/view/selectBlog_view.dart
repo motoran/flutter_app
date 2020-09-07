@@ -30,14 +30,19 @@ class selectBlogView extends StatelessWidget {
             return NotificationListener<ScrollNotification>(
               onNotification: (notification) {
                 // スクロールイベントのハンドリング
-                _vm.ScrollNotificationIvent(notification);
+                _vm.ScrollNotificationEvent(notification);
                 return false;
               },
-              child: ListView.builder(
-                  itemCount: _vm.getBlogNum(),
-                  itemBuilder: (context, int index) {
-                    return _memberButton(context, index);
-                  }),
+              child: RefreshIndicator(
+                onRefresh: () async{
+                  _vm.initBlogView();
+                },
+                child: ListView.builder(
+                    itemCount: _vm.getBlogNum(),
+                    itemBuilder: (context, int index) {
+                      return _memberButton(context, index);
+                    }),
+              ),
             );
           },
         ),
@@ -57,9 +62,7 @@ class selectBlogView extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (_) => ChangeNotifierProvider(
-                      create: (_) => BlogViewModel(
-                          memName: vm.getMemberName(),
-                          blogURL: vm.getBlogUrl(index)),
+                      create: (_) => BlogViewModel(memberName: vm.getMemberName(),index: index),
                       child: BlogView(),
                     ),
                   ),

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutterapp/member_data.dart';
 
 class SelectMemberViewModel extends ChangeNotifier {
-  final MemeberData _member = MemeberData();
+  final MemberData _member = MemberData();
 
   int getMemberNum() => _member.memberName.length;
 

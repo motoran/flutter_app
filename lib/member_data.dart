@@ -1,4 +1,12 @@
-class MemeberData {
+//シングルトンで扱う
+class MemberData {
+
+  static final MemberData _instance = MemberData._internal();
+
+  factory MemberData() => _instance;
+
+  MemberData._internal();
+
   final List<String> memberName = [
     "天城サリー",
     "海乃るり",
@@ -46,6 +54,4 @@ class MemeberData {
   List<String> blogTitle = List<String>();
   List<String> blogDate = List<String>();
   List<String> blogTxt = List<String>();
-
-  MemeberData();
 }

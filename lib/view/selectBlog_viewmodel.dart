@@ -6,7 +6,7 @@ import 'package:web_scraper/web_scraper.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class selectBlogViewModel extends ChangeNotifier {
-  final MemeberData _member = MemeberData();
+  final MemberData _member = MemberData();
   WebViewController webViewController;
 
   final int index;
@@ -15,6 +15,8 @@ class selectBlogViewModel extends ChangeNotifier {
   var streamController = StreamController<List<String>>();
 
   Stream<List<String>> get bloglPath => streamController.stream;
+
+  MemberData getMemberData() => _member;
 
   int getBlogNum() => _member.blogThumbnailPath.length;
 
@@ -33,7 +35,7 @@ class selectBlogViewModel extends ChangeNotifier {
   void setNotification(var notification) {}
 
   //イけてない
-  void ScrollNotificationIvent(ScrollNotification notification) {
+  void ScrollNotificationEvent(ScrollNotification notification) {
     if (loadingFlag) {
       if (notification.metrics.extentAfter == 0) {
         BlogListScreper();
@@ -42,6 +44,10 @@ class selectBlogViewModel extends ChangeNotifier {
   }
 
   selectBlogViewModel({int this.index}) : assert(index != null) {
+    initBlogView();
+  }
+
+  void initBlogView(){
     clearMemdata();
     BlogListScreper();
   }
