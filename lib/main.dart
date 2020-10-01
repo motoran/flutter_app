@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapp/bingo_data.dart';
 import 'package:flutterapp/view/home_view.dart';
 import 'package:flutterapp/view/news_view.dart';
 import 'package:flutterapp/view/selectMember_view.dart';
@@ -42,9 +43,7 @@ class _MyHomePageState extends State<MyHomePage>
     NewsPage(
       title: 'news',
     ),
-    HomePage(
-      title: 'home',
-    ),
+    HomeView(),
   ];
 
   int _screen = 0;
@@ -57,12 +56,23 @@ class _MyHomePageState extends State<MyHomePage>
       initialPage: _screen,
     );
 
+    final BingoData bingoData = BingoData();
     final FirebaseMessaging _firebaseMessaging = new FirebaseMessaging();
 
     _firebaseMessaging.configure(
       onMessage: (Map<String, dynamic> message) async {
         print("onMessage: $message");
-        _buildDialog(context, message.toString());
+//        _buildDialog(context, message.toString());
+        //ほんとはエラーハンドリングする
+        int num;
+        message.forEach((key, value) {
+          if (key.contains('data')) {
+            var fuga = value.toString();
+            var hoge = (value[0].toString()).replaceFirst("num:","0");
+            num = int.parse(hoge);
+          }
+        });
+        bingoData.addNum(num);
       },
       onLaunch: (Map<String, dynamic> message) async {
         print("onLaunch: $message");

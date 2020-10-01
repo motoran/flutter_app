@@ -1,30 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class HomePage extends StatefulWidget {
-  HomePage({Key key, this.title}) : super(key: key);
+import 'home_viewmodel.dart';
 
-  final String title;
-
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
+class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-          automaticallyImplyLeading: false,
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[Text('Home')],
-          ),
-        ),
+    final HomeViewModel _vm = Provider.of<HomeViewModel>(context, listen: true);
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('BINGO GAME'),
+        automaticallyImplyLeading: false,
+      ),
+      body: Container(
+        child: Text(""),
       ),
     );
   }

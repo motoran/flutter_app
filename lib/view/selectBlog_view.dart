@@ -62,7 +62,7 @@ class selectBlogView extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (_) => ChangeNotifierProvider(
-                      create: (_) => BlogViewModel(memberName: vm.getMemberName(),index: index),
+                      create: (_) => BlogViewModel(memberName: vm.getMemberName(),blogIndex: index),
                       child: BlogView(),
                     ),
                   ),
